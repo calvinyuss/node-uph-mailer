@@ -44,7 +44,7 @@ var readHTMLFile = function(path, callback) {
 // iterator
 var i=0;
 
-readHTMLFile(__dirname + '/views/pages/MailPoint.html', function(err, html) {
+readHTMLFile(__dirname + '/resources/views/pages/MailPoint.html', function(err, html) {
   var template = handlebars.compile(html);
   var replacements = {
     event_name: ename,
@@ -55,6 +55,7 @@ readHTMLFile(__dirname + '/views/pages/MailPoint.html', function(err, html) {
   };
   var htmlToSend = template(replacements);
   var mailOptions = {
+    from: 'noreply',
     to: emails[i],
     subject: `Thank you, ${names[i]}`,
     html: htmlToSend
